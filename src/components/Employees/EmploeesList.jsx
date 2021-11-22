@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import s from './Employees.module.css'
+import { MyContext } from '../../context/context';
 
-const EmployeesList = ({ id, firstName, lastName}) => {
-    const [isInactive, setIsInactive] = useState([])
+const EmployeesList = ({id, firstName, lastName}) => {
+    const { isInactive, setIsInactive} = useContext(MyContext)
     const isActive = !isInactive.some(userId => userId === id)
+
     
     const changeInput = id => () => {
-        const index = isInactive.indexOf(id)
+    const index = isInactive.indexOf(id)
        setIsInactive(index >= 0 ? isInactive.filter(el => el !== id) : [...isInactive, id])
    }
 
     return (
          <ul key={id} className={s.employee__list}>
-            <li className={!isActive ? (s.employee__item,  s.active) :  s.employee__item}>{firstName} {lastName}</li>
+            <li className={!isActive
+                ? (s.employee__item, s.active)
+                : s.employee__item}>{firstName} {lastName}</li>
                <label>
                    <input
                     type="radio"

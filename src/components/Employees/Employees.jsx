@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import s from './Employees.module.css'
 import EmployeesList from './EmploeesList';
+import { MyContext } from '../../context/context';
 
 
-const Employees = ({ users }) => {
-
+const Employees = () => {
+    const { users } = useContext(MyContext)
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     const sortedUsers = [...users].sort((a, b) => a.firstName.localeCompare(b.firstName));
-    
     
     return (
        
