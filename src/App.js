@@ -8,8 +8,7 @@ import { MyContext } from './context/context';
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [isInactive, setIsInactive] = useState([]);
-  // const isActive = !isInactive.some(userId => userId === users.id);
+  const [isActive, setIsActive] = useState([]);
 
   useEffect(() => {
     getUser();
@@ -25,8 +24,8 @@ function App() {
       value={{
         users,
         setUsers,
-        isInactive,
-        setIsInactive,
+        isActive,
+        setIsActive,
       }}
     >
       <div className="App">

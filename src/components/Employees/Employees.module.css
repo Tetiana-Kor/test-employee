@@ -1,6 +1,13 @@
 .employee__title {
+  background: -webkit-linear-gradient(rgb(17, 6, 170), rgb(189, 238, 241));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   margin: 20px 0;
+}
+
+.employee__b {
+  width: 400px;
 }
 
 .employee__wrap {
@@ -31,4 +38,30 @@
 .active {
   color: blue;
   font-weight: bold;
+}
+
+.employee__empty {
+  text-align: center;
+  font-weight: bold;
+}
+
+.employee__birth {
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  padding: 0 0 0 30px;
+}
+
+.employee__month {
+  list-style: none;
+}
+
+.employee__monthList {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.employee__birthList {
+  font-style: italic;
+  color: blue;
+  margin-left: 20px;
 }

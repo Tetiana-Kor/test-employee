@@ -3,18 +3,18 @@ import s from './Employees.module.css'
 import { MyContext } from '../../context/context';
 
 const EmployeesList = ({id, firstName, lastName}) => {
-    const { isInactive, setIsInactive} = useContext(MyContext)
-    const isActive = !isInactive.some(userId => userId === id)
+    const { isActive, setIsActive} = useContext(MyContext)
+    const isExist = !isActive.some(userId => userId === id)
 
     
     const changeInput = id => () => {
-    const index = isInactive.indexOf(id)
-       setIsInactive(index >= 0 ? isInactive.filter(el => el !== id) : [...isInactive, id])
+    const index = isActive.indexOf(id)
+       setIsActive(index >= 0 ? isActive.filter(el => el !== id) : [...isActive, id])
    }
 
     return (
          <ul key={id} className={s.employee__list}>
-            <li className={!isActive
+            <li className={!isExist
                 ? (s.employee__item, s.active)
                 : s.employee__item}>{firstName} {lastName}</li>
                <label>
@@ -22,7 +22,7 @@ const EmployeesList = ({id, firstName, lastName}) => {
                     type="radio"
                      value='noActive'
                      name={id}
-                     checked={isActive}
+                     checked={isExist}
                      onChange={changeInput(id)} />
                               not active
                </label>
@@ -31,7 +31,7 @@ const EmployeesList = ({id, firstName, lastName}) => {
                        type="radio"
                        value='active'
                        name={id}
-                       checked={!isActive}
+                       checked={!isExist}
                        onChange={changeInput(id)} />
                                active
                     </label>

@@ -6,11 +6,10 @@ export const getDate = (str) => {
         const day = date.toLocaleDateString('en-GB', {day: 'numeric'})
         const month = date.toLocaleDateString('en-GB', { month: 'long' })
         const year = date.toLocaleDateString('en-GB', { year: 'numeric' })
-// console.log(`${day} ${month}, ${year} year`);
+
         return `${day} ${month}, ${year} year`
 }
  
-getDate()
 
 export const getAllMonths = () => {
 const month = new Date().getMonth();
