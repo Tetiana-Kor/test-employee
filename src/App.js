@@ -4,15 +4,21 @@ import EmployeeBirth from './components/Employees/EmployeeBirth';
 import Employees from './components/Employees/Employees';
 import API from './services/service-api';
 import { MyContext } from './context/context';
-// console.log(API.response);
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [isActive, setIsActive] = useState([]);
+  const [isActive, setIsActive] = useState(
+    JSON.parse(localStorage.getItem('isActive')) ?? [],
+  );
 
   useEffect(() => {
     getUser();
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('isActive', JSON.stringify(isActive ?? []));
+    localStorage.setItem('users', JSON.stringify(users ?? []));
+  }, [isActive, users]);
 
   async function getUser() {
     const response = await API();
@@ -23,7 +29,6 @@ function App() {
     <MyContext.Provider
       value={{
         users,
-        setUsers,
         isActive,
         setIsActive,
       }}
